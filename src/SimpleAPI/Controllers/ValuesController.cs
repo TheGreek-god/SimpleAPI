@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace SimpleAPI.Controllers
@@ -12,16 +9,30 @@ namespace SimpleAPI.Controllers
     {
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<string>> GetAll()
         {
-            return new string[] { "Finbarr", "Okeke" };
+            return new string[] { "full-name", "nickname" };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        // GET api/values/full-name
+        [HttpGet("full-name")]
+        public ActionResult<string> GetFullName()
         {
-            return "Finbarr Okeke";
+            return "Okeke Tochukwu Finbarr";
+        }
+
+        // GET api/values/nickname
+        [HttpGet("nickname")]
+        public ActionResult<string> GetNickname()
+        {
+            return "The Greek-god";
+        }
+
+        // GET api/values/{id}
+        [HttpGet("{id:int}")]
+        public ActionResult<string> GetById(int id)
+        {
+            return $"You requested ID: {id}";
         }
 
         // POST api/values
@@ -41,5 +52,5 @@ namespace SimpleAPI.Controllers
         public void Delete(int id)
         {
         }
-    }
-}
+    }  
+} 
